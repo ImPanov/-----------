@@ -27,12 +27,13 @@ const timeCheck = [
   '13:00',
   '14:00',
 ];
-const types = [
-  'Дворец',
-  'Квартира',
-  'Дом',
-  'Бунгало',
-];
+const types = {
+  Palace : 'Дворец',
+  Flat : 'Квартира',
+  House : 'Дом',
+  Bungalow : 'Бунгало',
+  Hotel : 'Отель'
+};
 const location = {
   x: 0,
   y: 0,
@@ -56,7 +57,7 @@ const createAuthor = (index) => ({
     title: titles[index],
     address: `${location.x = getRandomFloat(35.65000, 35.70000, 5)}, ${location.y = getRandomFloat(139.70000, 139.80000, 5)}`,
     price: getRandomInteger(1000, 20000),
-    type: getRandomElement(types),
+    type: getRandomElement(Object.values(types)),
     rooms: getRandomInteger(1, 4),
     guests: getRandomInteger(1, 3),
     checkin: getRandomElement(timeCheck),
@@ -68,5 +69,4 @@ const createAuthor = (index) => ({
 });
 
 const authors = new Array(8).fill(null).map((_, i) => createAuthor(i+1));
-
-export { authors, features };
+export { authors, features, types, };
