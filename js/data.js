@@ -28,10 +28,10 @@ const timeCheck = [
   '14:00',
 ];
 const types = [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
+  'Дворец',
+  'Квартира',
+  'Дом',
+  'Бунгало',
 ];
 const location = {
   x: 0,
@@ -49,8 +49,6 @@ const titles = [
   'Квартира на улице Тургенева',
   'Дом на улице Шолохова',
 ];
-
-// eslint-disable-next-line no-return-assign
 const createAuthor = (index) => ({
   id: index,
   avatar: `img/avatars/user${String(index).padStart(2, '0')}.png`,
@@ -65,10 +63,10 @@ const createAuthor = (index) => ({
     checkout: getRandomElement(timeCheck),
     features: getRandomUniqueElements(features, getRandomInteger(1, features.length)),
     description: getRandomElement(description),
-    photos: getRandomElement(photos),
+    photos: getRandomUniqueElements(photos, getRandomInteger(1, photos.length)),
   },
 });
 
-const authors = new Array(8).fill(null).map((_, i) => createAuthor(i));
-// eslint-disable-next-line no-console
-console.log(authors);
+const authors = new Array(8).fill(null).map((_, i) => createAuthor(i+1));
+
+export { authors, features };

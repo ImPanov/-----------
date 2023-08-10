@@ -1,1 +1,1 @@
-import './data';
+import './card.js';
