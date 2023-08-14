@@ -34,10 +34,6 @@ const types = {
   Bungalow : 'Бунгало',
   Hotel : 'Отель'
 };
-const location = {
-  x: 0,
-  y: 0,
-};
 const titles = [
   'Квартира на улице Ленина',
   'Дом на улице Пушкина',
@@ -55,7 +51,7 @@ const createAuthor = (index) => ({
   avatar: `img/avatars/user${String(index).padStart(2, '0')}.png`,
   offer: {
     title: titles[index],
-    address: `${location.x = getRandomFloat(35.65000, 35.70000, 5)}, ${location.y = getRandomFloat(139.70000, 139.80000, 5)}`,
+
     price: getRandomInteger(1000, 20000),
     type: getRandomElement(Object.values(types)),
     rooms: getRandomInteger(1, 4),
@@ -65,6 +61,10 @@ const createAuthor = (index) => ({
     features: getRandomUniqueElements(features, getRandomInteger(1, features.length)),
     description: getRandomElement(description),
     photos: getRandomUniqueElements(photos, getRandomInteger(1, photos.length)),
+  },
+  location: {
+    lat: getRandomFloat(35.65000, 35.70000, 5),
+    lng: getRandomFloat(139.70000, 139.80000, 5)
   },
 });
 

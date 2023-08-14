@@ -1,12 +1,11 @@
-import { authors } from "./data.js";
 import { endNum } from "./utils.js";
 
 
 const cardTemplate = document.querySelector('#card').content;
-const mapCanvas = document.querySelector('.map__canvas');
-const renderCard = (author) => {
+const generatePopup = (author) => {
   const popup = cardTemplate.querySelector('.popup').cloneNode(true);
   popup.querySelector('.popup__title').textContent = author.offer.title;
+  popup.querySelector('.popup__text--address').textContent = author.location;
   popup.querySelector('.popup__text--price').textContent = author.offer.price + ' ₽/ночь';
   popup.querySelector('.popup__type').textContent = author.offer.type;
   popup.querySelector('.popup__text--capacity').textContent = endNum(author.offer.rooms, ['комната', 'комнаты', 'комнат']) + ' для ' + endNum(author.offer.guests, ['гостя', 'гостей', 'гостей']);
@@ -28,6 +27,7 @@ const renderCard = (author) => {
     photosList.appendChild(img);
   });
   popup.querySelector('.popup__avatar').src = author.avatar;
-  mapCanvas.append(popup);
+  return document.createDocumentFragment().appendChild(popup);
 }
-renderCard(authors[1]);
+
+export { generatePopup }
